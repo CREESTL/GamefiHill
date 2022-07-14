@@ -1,23 +1,29 @@
+// SPDX-License-Identifier: MIT
 require('dotenv').config()
 const { ethers } = require("ethers");
 require("@nomicfoundation/hardhat-toolbox");
 
 // Add some .env individual variables
-const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID;
-const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY;
+const POLYGON_PRIVATE_KEY = process.env.POLYGON_PRIVATE_KEY;
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY;
 
 
 module.exports = {
-  defaultNetwork: "hardhat",
+  defaultNetwork: "mumbai",
   networks: {
+    // a.k.a localhost
     hardhat: {
       gas: 2100000,
       gasPrice: 8000000000,
     },
-    rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${INFURA_PROJECT_ID}`,
-      accounts: RINKEBY_PRIVATE_KEY ? [RINKEBY_PRIVATE_KEY] : [],
-    },
+    // Polygon testnet
+    mumbai: {
+      url: "https://rpc-mumbai.maticvigil.com",
+      accounts: [process.env.POLYGON_PRIVATE_KEY]
+    }
+  },
+  etherscan: {
+    apiKey: process.env.POLYGONSCAN_API_KEY
   },
   solidity: {
     version: "0.8.9",
