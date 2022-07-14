@@ -1,10 +1,6 @@
 // SPDX-License-Identifier: MIT 
 const hre = require("hardhat");
 
-/*
-  Run it with `npx hardhat run --network *desired network name*`
-*/
-
 async function main() {
 
   // Get different avaliable addresses
@@ -13,10 +9,10 @@ async function main() {
   // We get the contract to deploy
   // Deploy the token
   _kraken = await ethers.getContractFactory("Kraken");
-  ttt = await _kraken.deploy();
-  await ttt.deployed();
+  kraken = await _kraken.deploy();
+  await kraken.deployed();
 
-  console.log("Kraken deployed to:", ttt.address);
+  console.log("Kraken deployed to:", kraken.address);
 }
 
 main()
