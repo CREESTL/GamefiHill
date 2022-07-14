@@ -20,7 +20,7 @@ contract Kraken is ERC721URIStorage {
 
     // Issues 1 token with a provided URI to the user
     // Returns new token's ID
-    function giveMeToken(string memory tokenURI) public returns (uint256) {
+    function giveMeToken(string memory tokenURI) public returns (uint256 newItemId) {
 
         // Get the current latest ID
         // First ID is 0
@@ -41,8 +41,6 @@ contract Kraken is ERC721URIStorage {
 
         // Increment ID
         _tokenIds.increment();
-
-        return newItemId;
     }
 
     // Getter for maxTotalSupply
