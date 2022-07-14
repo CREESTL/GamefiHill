@@ -1,35 +1,40 @@
-require("@nomicfoundation/hardhat-toolbox");
+require('dotenv').config()
 const { ethers } = require("ethers");
+require("@nomicfoundation/hardhat-toolbox");
+
+// Add some .env individual variables
+const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID;
+const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY;
+
 
 module.exports = {
   defaultNetwork: "hardhat",
-  solidity: {
-    compilers: [
-      {
-        version: "0.8.9",
-        settings: {
-          optimizer: {runs: 1, enabled: true},
-        },
-      },
-    ],
-  },
   networks: {
-    // a.k.a localhost
     hardhat: {
-      // Create 20 Signers with 1000 wei(not ETH!!!) each
-      accounts: {
-        count: 20,
-        accountsBalance: ethers.utils.parseEther('1000').toString(),
-      },
+      gas: 2100000,
+      gasPrice: 8000000000,
+    },
+    rinkeby: {
+      url: `https://rinkeby.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: RINKEBY_PRIVATE_KEY ? [RINKEBY_PRIVATE_KEY] : [],
     },
   },
-  mocha: {
-    timeout: 20000000,
+  solidity: {
+    version: "0.8.9",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
   },
   paths: {
-    sources: "./contracts/",
-    tests: "./test/",
+    sources: "./contracts",
+    tests: "./test",
+    cache: "./cache",
+    artifacts: "./artifacts"
   },
-};
-
-
+  mocha: {
+    timeout: 20000000000
+  }
+}
