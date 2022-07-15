@@ -14,13 +14,13 @@ contract Kraken is ERC721URIStorage {
     mapping(address => bool) mintedTokens;
 
     // Maximum number of tokens to mint
-    uint16 constant public maxTotalSupply = 60_000; 
+    uint16 constant public maxTotalSupply = 6_000_000; 
 
     constructor() ERC721("Kraken", "KRK") {}
 
     // Issues 1 token with a provided URI to the user
     // Returns new token's ID
-    function giveMeToken(string memory tokenURI) public returns (uint256 newItemId) {
+    function giveMeToken(string memory tokenURI) public returns (uint256) {
 
         // Get the current latest ID
         // First ID is 0
@@ -41,6 +41,8 @@ contract Kraken is ERC721URIStorage {
 
         // Increment ID
         _tokenIds.increment();
+
+        return newItemId;
     }
 
     // Getter for maxTotalSupply
