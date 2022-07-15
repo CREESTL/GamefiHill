@@ -47,10 +47,24 @@ b) Polygon main network
 npx hardhat run scripts/deploy.js --network polygon
 ```
 
-
 __Supported networks__:
 - Hardhat local network: `--network localhost`
   - You have to start local node with `npx hardhat node` before running any script (except tests)
 - Polygon Mumbai test network: `--network mumbai`
 - Polygon main network: `--network polygon`
 
+
+---
+
+### Main Functions
+
+1. `giveMeToken`: 
+  - Issues one (and only one) token for the caller
+  - Can be called by anyone
+  - No additional payments except for gas fees  
+2. `giveTokenTo`:
+  - Issues one (and only one) token for the provided user
+  - Can only be called by the owner of the contract
+  - No additional payments except for gas fees
+
+Please note that _both_ functions require a 'uri' string as a parameter. 
