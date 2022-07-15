@@ -13,7 +13,6 @@ This repository contains an ERC-721 token smart contract and some auxiliary code
 - Export your private key from MetaMask to `.env` file
 ```
 POLYGON_PRIVATE_KEY=***your private key from MetaMask***
-
 ```
 - Create an account on [Polygonscan](https://polygonscan.com/)
   - Go to "My Profile" - "API_KEYs"
@@ -51,7 +50,7 @@ npx hardhat run scripts/deploy.js --network polygon
 
 __Supported networks__:
 - Hardhat local network: `--network localhost`
-  - You have to start local node with `npx hardhat node` before running any script
+  - You have to start local node with `npx hardhat node` before running any script (except tests)
 - Polygon Mumbai test network: `--network mumbai`
 - Polygon main network: `--network polygon`
 
