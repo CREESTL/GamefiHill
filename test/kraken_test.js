@@ -11,6 +11,7 @@ describe("Kraken", function () {
   let owner;
   let addr1;
   let addr2;
+  let addr3;
   let addrs;
 
   // Sample URI string
@@ -98,9 +99,9 @@ describe("Kraken", function () {
     });
 
     it("Should have correct max total supply", async function () {
-      // Max total supply should be equal to 60 000
+      // Max total supply should be equal to 6 000 000
       let maxTotalSupply = await kraken.getMaxTotalSupply();
-      expect(maxTotalSupply).to.equal(60_000);
+      expect(maxTotalSupply).to.equal(6_000_000);
     });
 
     it("Should have correct total supply", async function () {

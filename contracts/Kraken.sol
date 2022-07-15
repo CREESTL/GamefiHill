@@ -4,7 +4,6 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-
 contract Kraken is ERC721URIStorage {
 
     using Counters for Counters.Counter;
@@ -14,7 +13,7 @@ contract Kraken is ERC721URIStorage {
     mapping(address => bool) mintedTokens;
 
     // Maximum number of tokens to mint
-    uint16 constant public maxTotalSupply = 6_000_000; 
+    uint256 constant public maxTotalSupply = 6_000_000; 
 
     constructor() ERC721("Kraken", "KRK") {}
 
@@ -47,7 +46,7 @@ contract Kraken is ERC721URIStorage {
 
     // Getter for maxTotalSupply
     // (max number of tokens to mint)
-    function getMaxTotalSupply() public pure returns (uint16) {
+    function getMaxTotalSupply() public pure returns (uint256) {
         return maxTotalSupply;
     }
 
