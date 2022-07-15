@@ -114,6 +114,15 @@ describe("Kraken", function () {
       expect(maxTotalSupply).to.equal(3);
     });
 
+    it("Should transfer ownership", async function () {
+      // Check the first owner
+      expect(await kraken.owner()).to.equal(owner.address);
+      // Transfer ownership to the othe address
+      await kraken.connect(owner).transferOwnership(addr1.address);
+      // Check the second owner
+      expect(await kraken.owner()).to.equal(addr1.address);
+    });
+
   });
 
 });

@@ -3,8 +3,9 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Kraken is ERC721URIStorage {
+contract Kraken is ERC721URIStorage, Ownable {
 
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
@@ -19,7 +20,7 @@ contract Kraken is ERC721URIStorage {
 
     // Issues 1 token with a provided URI to the user
     // Returns new token's ID
-    function giveMeToken(string memory tokenURI) public returns (uint256) {
+    function giveMeToken(string memory tokenURI) public returns (uint256)  {
 
         // Get the current latest ID
         // First ID is 0
@@ -56,5 +57,4 @@ contract Kraken is ERC721URIStorage {
         return _tokenIds.current();
     }
 
-    // TODO admin giveToken
 }
