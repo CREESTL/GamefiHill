@@ -23,7 +23,7 @@ module.exports = {
     },
     // Polygon mainnet
     polygon: {
-      url: "https://polygon-rpc.com",
+      url: "https://rpc-mainnet.maticvigil.com",
       accounts: [process.env.POLYGON_PRIVATE_KEY]
     }
   },
