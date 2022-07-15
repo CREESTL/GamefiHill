@@ -7,6 +7,26 @@ This repository contains an ERC-721 token smart contract and some auxiliary code
 - Clone this repository
 - Navigate to the directory with the cloned code
 - Install [Hardhat](https://hardhat.org/) with `npm install --save-dev hardhat`
+- Add [Polygon Mainnet](https://docs.polygon.technology/docs/develop/metamask/config-polygon-on-metamask/) to MetaMask
+  - Switch to Polygon Mainnet in MetaMask
+- Create a file called `.env` in the root of the project
+- Export your private key from MetaMask to `.env` file
+```
+POLYGON_PRIVATE_KEY=***your private key from MetaMask***
+
+```
+- Create an account on [Polygonscan](https://polygonscan.com/)
+  - Go to "My Profile" - "API_KEYs"
+  - Create a new API KEY
+  - Copy "Api-Key Token"
+- Export your Polygonscan API KEY to `.env` file
+```
+POLYGONSCAN_API_KEY=***your API key from Polygonscan***
+```
+
+__DO NOT SHARE YOUR .env FILE IN ANY WAY OR YOU RISK TO LOSE ALL YOUR FUNDS__
+
+---
 
 ### Build
 ```
@@ -18,18 +38,20 @@ npx hardhat compile
 npx hardhat test
 ```
 
-### Run JavaScript Scripts
-```
-npx hardhat run scripts/[script_name] --network [network_name]
-```
-For example run
+### Deploy
+а) Mumbai test network
 ```
 npx hardhat run scripts/deploy.js --network mumbai
+```  
+b) Polygon main network
 ```
-to deploy the token to Mumbai test network.
+npx hardhat run scripts/deploy.js --network polygon
+```
+
 
 __Supported networks__:
 - Hardhat local network: `--network localhost`
   - You have to start local node with `npx hardhat node` before running any script
-- Polygon Mumbai test network (main): `--network mumbai`
+- Polygon Mumbai test network: `--network mumbai`
+- Polygon main network: `--network polygon`
 
