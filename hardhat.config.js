@@ -16,9 +16,14 @@ module.exports = {
       gas: 2100000,
       gasPrice: 8000000000,
     },
-    // Polygon testnet
+    // Polygon Mumbai testnet
     mumbai: {
       url: "https://rpc-mumbai.maticvigil.com",
+      accounts: [process.env.POLYGON_PRIVATE_KEY]
+    },
+    // Polygon mainnet
+    polygon: {
+      url: "https://polygon-rpc.com",
       accounts: [process.env.POLYGON_PRIVATE_KEY]
     }
   },
