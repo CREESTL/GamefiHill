@@ -75,13 +75,13 @@ contract Kraken is ERC721URIStorage, Ownable {
 
     // Getter for maxTotalSupply
     // (max number of tokens to mint)
-    function getMaxTotalSupply() public pure returns (uint256) {
+    function maxTotalSupply() public pure returns (uint256) {
         return maxTotalSupply;
     }
 
     // Getter for totalSupply
     // (number of tokens minted)
-    function getTotalSupply() public view returns (uint256) {
+    function totalSupply() public view returns (uint256) {
         return _tokenIds.current();
     }
 
