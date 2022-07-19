@@ -15,7 +15,7 @@ contract Kraken is ERC721URIStorage, Ownable {
     mapping(address => bool) mintedTokens;
 
     /// @dev Maximum number of tokens to mint
-    uint256 constant public maxTotalSupply = 6_000_000; 
+    uint256 constant public _maxTotalSupply = 6_000_000; 
 
     constructor() ERC721("Kraken", "KRK") {}
 
@@ -29,7 +29,7 @@ contract Kraken is ERC721URIStorage, Ownable {
         uint256 newItemId = _tokenIds.current();
         /// @dev Check whether ID is greater than max total supply
         /// @notice If someone burns his token, it will not affect the number of minted tokens
-        require(newItemId <= maxTotalSupply, "Total Supply of Tokens Exceeded");
+        require(newItemId <= _maxTotalSupply, "Total Supply of Tokens Exceeded");
 
         /// @notice User can mint only one token
         require(!mintedTokens[msg.sender], "Only a Single Token for Address is Allowed!");
@@ -58,7 +58,7 @@ contract Kraken is ERC721URIStorage, Ownable {
         uint256 newItemId = _tokenIds.current();
         /// @dev Check whether ID is greater than max total supply
         /// @notice If someone burns his token, it will not affect the number of minted tokens
-        require(newItemId <= maxTotalSupply, "Total Supply of Tokens Exceeded");
+        require(newItemId <= _maxTotalSupply, "Total Supply of Tokens Exceeded");
 
         /// @notice Only one token for a user can be minted
         require(!mintedTokens[user], "Only a Single Token for Address is Allowed!");
@@ -78,7 +78,7 @@ contract Kraken is ERC721URIStorage, Ownable {
 
     /// @notice Get the maximum supply of tokens
     function maxTotalSupply() public pure returns (uint256) {
-        return maxTotalSupply;
+        return _maxTotalSupply;
     }
 
     /// @notice Get the current supply of tokens

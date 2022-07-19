@@ -113,7 +113,7 @@ describe("Kraken", function () {
 
     it("Should have correct max total supply", async function () {
       // Max total supply should be equal to 6 000 000
-      let maxTotalSupply = await kraken.getMaxTotalSupply();
+      let maxTotalSupply = await kraken.maxTotalSupply();
       expect(maxTotalSupply).to.equal(6_000_000);
     });
 
@@ -123,7 +123,7 @@ describe("Kraken", function () {
       await kraken.connect(addr2).giveMeToken(uri);
       await kraken.connect(addr3).giveMeToken(uri);
       // Total supply should be equal to 3
-      let maxTotalSupply = await kraken.getTotalSupply();
+      let maxTotalSupply = await kraken.totalSupply();
       expect(maxTotalSupply).to.equal(3);
     });
 
