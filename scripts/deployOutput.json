@@ -1,0 +1,12 @@
+{
+  "networks": {
+    "mumbai": {
+      "address": "0x6d220f23511Df161B008e16c6b7ebb941cd4B446",
+      "verification": "https://mumbai.polygonscan.com/address/0x6d220f23511Df161B008e16c6b7ebb941cd4B446#code"
+    },
+    "mainnet": {
+      "address": "",
+      "verification": ""
+    }
+  }
+}
