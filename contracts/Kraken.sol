@@ -47,35 +47,6 @@ contract Kraken is ERC721URIStorage, Ownable {
         return newItemId;
     }
 
-    /// @notice Issues 1 token with a provided URI to the provided address
-    /// @notice Returns new token's ID
-    /// @notice Can only be called by the owner of the contract
-    /// @param tokenURI The URI of item in the IPFS storage
-    /// @return ID of the new token
-    function giveTokenTo(address user, string memory tokenURI) public onlyOwner returns (uint256)  {
-
-        /// @dev Get the current latest ID. Starts with 0.
-        uint256 newItemId = _tokenIds.current();
-        /// @dev Check whether ID is greater than max total supply
-        /// @notice If someone burns his token, it will not affect the number of minted tokens
-        require(newItemId <= _maxTotalSupply, "Total Supply of Tokens Exceeded");
-
-        /// @notice Only one token for a user can be minted
-        require(!mintedTokens[user], "Only a Single Token for Address is Allowed!");
-        mintedTokens[user] = true;
-
-        /// @dev Mint token with the ID to the user
-        _mint(user, newItemId);
-
-        /// @dev Set the URI of the token
-        _setTokenURI(newItemId, tokenURI);
-
-        /// @dev Increment token's ID
-        _tokenIds.increment();
-
-        return newItemId;
-    }
-
     /// @notice Get the maximum supply of tokens
     function maxTotalSupply() public pure returns (uint256) {
         return _maxTotalSupply;

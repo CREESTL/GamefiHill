@@ -56,15 +56,12 @@ After the contract gets deployed and verified you can find its address in the `d
 
 ---
 
-### Main Functions
+### Main Function
 
-1. `giveMeToken`: 
-    - Issues one (and only one) token for the caller
-    - Can be called by anyone
-    - No additional payments except for gas fees  
-2. `giveTokenTo`:
-    - Issues one (and only one) token for the provided user
-    - Can only be called by the owner of the contract
-    - No additional payments except for gas fees
+`giveMeToken`: 
+  - Issues one (and only one) token for the caller
+  - Can be called by anyone
+  - No additional payments except for gas fees  
 
-Please note that _both_ functions require a `uri` string as a parameter.
+
+Please note that the function requires a `uri` string as a parameter.

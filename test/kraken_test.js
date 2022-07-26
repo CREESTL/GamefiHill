@@ -54,19 +54,6 @@ describe("Kraken", function () {
       await expect(kraken.connect(addr1).giveMeToken(uri)).to.revertedWith("Only a Single Token for Address is Allowed!");
     });
 
-    it("Should allow owner to mint tokens to several users", async function () {
-      // Mint 3 tokens to 3 different accounts. One for account.
-      await kraken.connect(owner).giveTokenTo(addr1.address, uri);
-      const addr1Balance = await kraken.balanceOf(addr1.address);
-      expect(addr1Balance).to.equal(1);
-      await kraken.connect(owner).giveTokenTo(addr2.address, uri);
-      const addr2Balance = await kraken.balanceOf(addr2.address);
-      expect(addr2Balance).to.equal(1);
-      await kraken.connect(owner).giveTokenTo(addr3.address, uri);
-      const addr3Balance = await kraken.balanceOf(addr3.address);
-      expect(addr3Balance).to.equal(1);
-    });      
-
     it("Should transfer tokens between accounts", async function () {
       // Mint one token to first account
       await kraken.connect(addr1).giveMeToken(uri);
@@ -130,14 +117,14 @@ describe("Kraken", function () {
     it("Should transfer ownership", async function () {
       // Check the first owner
       expect(await kraken.owner()).to.equal(owner.address);
-      // Transfer ownership to the othe address
+      // Transfer ownership to the other address
       await kraken.connect(owner).transferOwnership(addr1.address);
       // Check the second owner
       expect(await kraken.owner()).to.equal(addr1.address);
       // Check that transfer works as well
-      await kraken.connect(addr1).giveTokenTo(addr2.address, uri);
-      const addr2Balance = await kraken.balanceOf(addr2.address);
-      expect(addr2Balance).to.equal(1);
+      await kraken.connect(addr1).giveMeToken(uri);
+      const addr1Balance = await kraken.balanceOf(addr1.address);
+      expect(addr1Balance).to.equal(1);
     });
 
   });
