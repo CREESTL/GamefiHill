@@ -10,9 +10,6 @@ const OUTPUT_DEPLOY = require("./deployOutput.json");
 async function main() {
 
   console.log("Start of Deployment...");
-
-  // Get different avaliable addresses
-  [owner, addr1, addr2, ...addrs] = await ethers.getSigners();
   
   // Get the contract and deploy it
   _kraken = await ethers.getContractFactory("Kraken");
